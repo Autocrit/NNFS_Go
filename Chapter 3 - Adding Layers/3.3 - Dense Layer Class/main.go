@@ -14,15 +14,9 @@ type LayerDense struct {
 }
 
 func NewLayerDense(inputs, neurons int) *LayerDense {
-	// Min/max for rand weights
-	const (
-		min = -0.2
-		max = 0.2
-	)
-
 	rdata := make([]float64, inputs*neurons)
 	for i := 0; i < inputs*neurons; i++ {
-		rdata[i] = min + rand.Float64()*(max-min)
+		rdata[i] = rand.NormFloat64() * 0.1
 	}
 
 	layer := LayerDense{
