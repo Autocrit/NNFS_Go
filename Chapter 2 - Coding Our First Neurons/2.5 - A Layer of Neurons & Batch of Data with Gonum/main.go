@@ -6,8 +6,6 @@ import (
 	"gonum.org/v1/gonum/mat"
 )
 
-// Using mat.Dense etc
-
 func main() {
 	inputs := mat.NewDense(3, 4, []float64{
 		1, 2, 3, 2.5,
