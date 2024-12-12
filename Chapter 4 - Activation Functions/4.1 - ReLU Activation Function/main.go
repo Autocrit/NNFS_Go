@@ -43,6 +43,10 @@ func (layer *LayerDense) Forward(inputs *mat.Dense) {
 	}
 }
 
+func NewActivationReLU() *ActivationReLU {
+	return new(ActivationReLU)
+}
+
 func (act *ActivationReLU) Forward(inputs *mat.Dense) {
 	act.output = mat.NewDense(inputs.RawMatrix().Rows, inputs.RawMatrix().Cols, nil)
 
@@ -57,7 +61,7 @@ func main() {
 
 	//fmt.Println(mat.Formatted(layer1.output))
 
-	var activation ActivationReLU
+	activation := NewActivationReLU()
 	activation.Forward(layer1.output)
 	fmt.Println(mat.Formatted(activation.output))
 }
