@@ -43,8 +43,9 @@ func main() {
 
 	var layer2_outputs mat.Dense
 
-	r, c = layer2_outputs.Dims()
 	layer2_outputs.Mul(&layer1_outputs, weights2.T())
+
+	r, c = layer2_outputs.Dims()
 	for i := 0; i < r; i++ {
 		for j := 0; j < c; j++ {
 			layer2_outputs.Set(i, j, layer2_outputs.At(i, j)+biases2.At(0, j))
