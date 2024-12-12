@@ -32,17 +32,21 @@ func main() {
 	})
 
 	var layer1_outputs mat.Dense
+
+	r, c := layer1_outputs.Dims()
 	layer1_outputs.Mul(inputs, weights.T())
-	for i := 0; i < layer1_outputs.RawMatrix().Rows; i++ {
-		for j := 0; j < layer1_outputs.RawMatrix().Cols; j++ {
+	for i := 0; i < r; i++ {
+		for j := 0; j < c; j++ {
 			layer1_outputs.Set(i, j, layer1_outputs.At(i, j)+biases.At(0, j))
 		}
 	}
 
 	var layer2_outputs mat.Dense
+
+	r, c = layer2_outputs.Dims()
 	layer2_outputs.Mul(&layer1_outputs, weights2.T())
-	for i := 0; i < layer2_outputs.RawMatrix().Rows; i++ {
-		for j := 0; j < layer2_outputs.RawMatrix().Cols; j++ {
+	for i := 0; i < r; i++ {
+		for j := 0; j < c; j++ {
 			layer2_outputs.Set(i, j, layer2_outputs.At(i, j)+biases2.At(0, j))
 		}
 	}

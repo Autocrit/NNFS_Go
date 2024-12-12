@@ -25,8 +25,9 @@ func main() {
 
 	output.Mul(inputs, weights.T())
 
-	for i := 0; i < output.RawMatrix().Rows; i++ {
-		for j := 0; j < output.RawMatrix().Cols; j++ {
+	r, c := output.Dims()
+	for i := 0; i < r; i++ {
+		for j := 0; j < c; j++ {
 			output.Set(i, j, output.At(i, j)+biases.At(0, j))
 		}
 	}
