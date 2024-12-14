@@ -7,11 +7,6 @@ import (
 	"gonum.org/v1/gonum/stat"
 )
 
-type Loss interface {
-	Calculate(output *mat.Dense, y []int) float64
-	Forward(output *mat.Dense, y []int) float64
-}
-
 type LossCategoricalCrossEntropy struct {
 }
 
